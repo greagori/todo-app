@@ -1,0 +1,41 @@
+.taskbox {
+    padding-bottom: 10px;
+    border-bottom: 8px solid;
+    padding-right: 10px;
+  }
+  .taskbox > form {
+    display: flex;
+    flex-direction: column;
+  }
+  .taskbox__input {
+    padding: 20px;
+    display: flex;
+  }
+  
+  .taskbox__button {
+    color: rgb(90, 90, 90) !important;
+    font-weight: 500 !important;
+    text-transform: inherit !important;
+    width: 80px !important;
+  }
+  
+  .taskbox__input > input {
+    flex: 1;
+    margin-left: 20px;
+    font-size: 20px;
+    border: none;
+  }
+  
+  .taskbox__taskButton {
+    background-color: rgb(90, 90, 90) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 900 !important;
+    text-transform: inherit !important;
+    border-radius: 30px !important;
+    width: 80px !important;
+    height: 50px !important;
+    margin-top: 20px !important;
+    margin-left: auto !important;
+  }
+  

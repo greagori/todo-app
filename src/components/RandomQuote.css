@@ -1,0 +1,16 @@
+.header__quote {
+    color: #565058;
+    font-style: italic;
+  }
+  .header__quote--text {
+    font-size: small;
+    font-weight: 500;
+    padding: 5px;
+  }
+  .header__quote--author {
+    font-size: small;
+    font-weight: 200;
+    text-indent: 30px;
+    padding: 5px;
+  }
+  
