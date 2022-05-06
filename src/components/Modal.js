@@ -1,16 +1,19 @@
-// import React, { useState } from "react";
+// import React from "react";
+// import Modal from "@material-ui/core";
 
 // function Modal() {
-//   const [open, setOpen] = useState(false);
-//   const handleOpen = () => {
-//     setOpen(true);
-//   };
-//   return (
-//     <div>
-//       open={open} onClose={(e) => setOpen(false)}>
-//       <button onClick={(e) => setOpen(false)}>Edit</button>
-//     </div>
-//   );
+// 	return (
+// 		<div>
+// 			<Modal
+// 				open={open}
+// 				onClose={handleClose}
+// 				aria-labelledby="simple-modal-title"
+// 				aria-describedby="simple-modal-description"
+// 			>
+// 				{body}
+// 			</Modal>
+// 		</div>
+// 	);
 // }
 
 // export default Modal;

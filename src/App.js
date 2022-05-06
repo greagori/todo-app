@@ -8,8 +8,8 @@ function App() {
     // BEM
     <div className="app">
       <Header />
-
       <TaskFeed />
+
     </div>
   );
 }

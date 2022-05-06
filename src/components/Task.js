@@ -1,26 +1,54 @@
-import React, { forwardRef } from "react";
+import React, { useState } from "react";
 import "./Task.css";
+import { Modal } from "@mui/material";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import PublishedWithChangesIcon from "@mui/icons-material/PublishedWithChanges";
+import EditOutlinedIcon from "@mui/icons-material//EditOutlined";
+import db from "./firebase";
 
-const Task = forwardRef(({ title }, ref) => {
-  return (
-    <div className="task" ref={ref}>
-      <div className="task__body">
-        <div className="task__header">
-          <p>{title}</p>
-          <div className="task__headertext">
-            <div className="task__headerdescription">
-              <p>task description</p>
-              <div className="task__footer">
-                <p>modal</p>
-                <DeleteOutlineIcon fontSize="small" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-});
+export default function Task({ title, inprogress, id }) {
+	function toggleInProgress() {
+		db.collection("tasks").doc(id).update({
+			inprogress: !inprogress,
+		});
+	}
+	const [open, setOpen] = useState(false);
 
-export default Task;
+	// const handleOpen = () => {
+	// 	setOpen(true);
+	// };
+
+	function deleteTask() {
+		db.collection("tasks").doc(id).delete();
+	}
+	return (
+		<>
+			<Modal open={open} onClose={(e) => setOpen(false)}>
+				<div>
+					<h1>I am a modal</h1>
+				</div>
+			</Modal>
+			<div className="task">
+				<div className="task__body">
+					<div className="task__header">
+						<div className="task__headertext">
+							{title}
+							<div className="task__headerdescription">
+								<div className="task__status">
+									Status: {inprogress ? "In Progress" : "Completed"}
+									<div className="task__footer">
+										<PublishedWithChangesIcon onClick={toggleInProgress}>
+											{inprogress ? "Done" : "UnDone"}
+										</PublishedWithChangesIcon>
+										<EditOutlinedIcon onClick={(e) => setOpen(true)} />
+										<DeleteOutlineIcon onClick={deleteTask} />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</>
+	);
+}

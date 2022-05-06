@@ -8,6 +8,7 @@ function Header() {
       <div>
         <h1>My ToDo App</h1>
         <RandomQuote />
+
       </div>
       <div></div>
     </div>
