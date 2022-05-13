@@ -1,0 +1,8 @@
+.footer__text {
+	display: flex;
+	font-size: small;
+	justify-content: space-around;
+	padding-left: 25px;
+	padding-right: 25px;
+	border-top: 1px solid grey;
+}

@@ -11,39 +11,56 @@ function TaskFeed() {
 	useEffect(() => {
 		getTasks();
 	}, []);
-
-	// useEffect(() => {
 	function getTasks() {
 		db.collection("tasks")
 			.orderBy("createdAt")
-			.onSnapshot(function (querySnapshot) {
+			.onSnapshot((snapshot) =>
 				setTasks(
-					querySnapshot.docs.map((doc) => ({
+					snapshot.docs.map((doc) => ({
+						key: doc.id,
 						id: doc.id,
 						title: doc.data().title,
 						inprogress: doc.data().inprogress,
 						createdAt: doc.data().createdAt,
 					}))
-				);
-			});
+				)
+			);
 	}
+
+	// useEffect(() => {
+	// 	db.collection("tasks")
+	// 		.orderBy("createdAt")
+	// 		.onSnapshot(function (querySnapshot) {
+	// 			setTasks(
+	// 				querySnapshot.docs.map((doc) => ({
+	// 					key: doc.id,
+	// 					id: doc.id,
+	// 					title: doc.data().title,
+	// 					inprogress: doc.data().inprogress,
+	// 					createdAt: doc.data().createdAt,
+	// 				}))
+	// 			);
+	// 		});
+	// });
 
 	return (
 		<div className="taskfeed">
 			<div className="taskfeed__header"></div>
 			<TaskBox />
-			<FlipMove>
-				{tasks.map((task) => (
-					<Task
-						title={task.title}
-						createdAt={task.createdAt}
-						inprogress={task.inprogress}
-						id={task.id}
-					/>
-				))}
-			</FlipMove>
+			<div>
+				<FlipMove easing="ease-in-out" duration={100}>
+					{tasks.map((task) => (
+						<Task
+							title={task.title}
+							createdAt={task.createdAt}
+							inprogress={task.inprogress}
+							id={task.id}
+							key={task.key}
+						/>
+					))}
+				</FlipMove>
+			</div>
 		</div>
 	);
 }
-
 export default TaskFeed;
